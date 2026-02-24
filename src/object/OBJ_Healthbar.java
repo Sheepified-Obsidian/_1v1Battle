@@ -1,6 +1,7 @@
 package object;
 
 import main.GamePanel;
+import main.ResourceLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -24,7 +25,11 @@ public class OBJ_Healthbar extends SuperObject {
 
 
         try{
-       sheet = ImageIO.read(getClass().getResourceAsStream("/hearts/Health Bar.png"));
+       sheet = ImageIO.read(ResourceLoader.openResource(
+               getClass(),
+               "/hearts/Health Bar.png",
+               "/sprites/hearts/Health Bar.png"
+       ));
             for (int i = 0; i < 8; i++) {
                 image[i] = sheet.getSubimage(i * frameSize, 0, frameSize, frameSize);
             }

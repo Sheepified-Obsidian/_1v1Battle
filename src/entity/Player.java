@@ -3,6 +3,7 @@ package entity;
 import main.GamePanel;
 import main.KeyHandlerArrows;
 import main.KeyHandlerWASD;
+import main.ResourceLoader;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -44,8 +45,16 @@ public class Player {
     public void getPlayerImage(int playerNumber){
         try {
 
-            rightlooking = ImageIO.read(getClass().getResourceAsStream("/player/p" + playerNumber + "Right.png"));
-            leftlooking = ImageIO.read(getClass().getResourceAsStream("/player/p" + playerNumber + "Left.png"));
+            rightlooking = ImageIO.read(ResourceLoader.openResource(
+                    getClass(),
+                    "/player/p" + playerNumber + "Right.png",
+                    "/sprites/player/p" + playerNumber + "Right.png"
+            ));
+            leftlooking = ImageIO.read(ResourceLoader.openResource(
+                    getClass(),
+                    "/player/p" + playerNumber + "Left.png",
+                    "/sprites/player/p" + playerNumber + "Left.png"
+            ));
 
         }catch(IOException e){
             e.printStackTrace();

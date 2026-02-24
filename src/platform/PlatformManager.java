@@ -1,6 +1,7 @@
 package platform;
 
 import main.GamePanel;
+import main.ResourceLoader;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
@@ -28,13 +29,21 @@ public class PlatformManager {
 
         try {
             platform[0] = new Platform();
-            platform[0].image = ImageIO.read(getClass().getResourceAsStream("/block/block_improv.png"));
+            platform[0].image = ImageIO.read(ResourceLoader.openResource(
+                    getClass(),
+                    "/block/block_improv.png",
+                    "/sprites/block/block_improv.png"
+            ));
 
 //            platform[1] = new Platform();
 //            platform[1].image = ImageIO.read(getClass().getResourceAsStream("/hearts/Health Bar.png"));
 
             platform[1] = new Platform();
-            platform[1].image = ImageIO.read(getClass().getResourceAsStream("/block/waer.png"));
+            platform[1].image = ImageIO.read(ResourceLoader.openResource(
+                    getClass(),
+                    "/block/waer.png",
+                    "/sprites/block/waer.png"
+            ));
 
 
 
@@ -47,7 +56,7 @@ public class PlatformManager {
 
     public void loadMap() {
         try {
-            InputStream is = getClass().getResourceAsStream("/maps/map1.txt");
+            InputStream is = ResourceLoader.openResource(getClass(), "/maps/map1.txt", "/res/maps/map1.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;
